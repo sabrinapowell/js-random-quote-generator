@@ -14,10 +14,29 @@ body {
   font-family: Roboto, sans-serif;
   font-weight: 700;
   text-align: center;
+  display: grid;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-container {
+  display: grid;
+  min-height: 100vh;
+}
+
+.generator-container, #footer {
+  grid-column: span 12;
+}
+
+.generator-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+
 
 .quote-container {
   width: auto;
@@ -79,10 +98,12 @@ button:active {
   color: #38A1F3;
 }
 
-.fa-twitter {
+/* Social Media Icons */
+.fa-twitter, .fa-linkedin, .fa-github {
   font-size: 1.5rem;
 }
 
+/* Loading Spinner */
 .loader {
   border: 16px solid #F3F3F3;
   border-top: 16px solid #333333;
@@ -95,6 +116,30 @@ button:active {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Footer */
+#footer {
+  margin-top: auto;
+}
+
+.sabrina-footer-details {
+  background-color: black;
+  color: white;
+  padding: 10px 0px;
+}
+
+.sabrina-footer-details i {
+  padding: 0px 5px;
+  padding-top: 5px;
+}
+
+.sabrina-footer-details a {
+  cursor: pointer;
+}
+
+.sabrina-footer-details a:visited {
+  color: white;
 }
 
 /* Media Query */
