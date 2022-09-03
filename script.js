@@ -2,11 +2,16 @@ const quoteContainer = document.getElementById("quote-container");
 const quoteText = document.getElementById("quote");
 const authorText = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
+const facebookBtn = document.getElementById("facebook");
+const likeBtn = document.getElementById("likeBtn");
+
 const newQuoteBtn = document.getElementById("new-quote");
 const loader = document.getElementById("loader");
 
 let apiQuotes = [];
 let displayedQuoteIndexes = [];
+let favoriteQuotes = [];
+let currentQuoteIndex = null;
 
 function showLoadingSpinner() {
   loader.hidden = false;
@@ -41,9 +46,13 @@ function newQuote() {
   }
 
   if (displayedQuoteIndexes.length === apiQuotes.length) {
-    // TODO: Add a special quote here for the lucky winner
+    quote = {
+      "author": "Sabrina Powell",
+      "text": "You have reached the end of my quotes. Please find something else to do!"
+    }
   } else {
     quote = apiQuotes[quoteIndex];
+    currentQuoteIndex = quoteIndex;
   }
 
   // check quote length to determine the styling
@@ -58,6 +67,7 @@ function newQuote() {
   quoteText.textContent = quote.text;
 
   hideLoadingSpinner();
+  removeFavorite();
 }
 
 // get quotes from API
@@ -85,9 +95,37 @@ function tweetQuote() {
   window.open(twitterUrl, "_blank");
 }
 
+// share quote via Facebook
+function shareOnFacebook() {
+  // TODO: add error message
+}
+
+function addFavorite() {
+  favoriteQuotes.push(apiQuotes[currentQuoteIndex]);
+  likeBtn.classList.add("favorite-quote");
+}
+
+function removeFavorite() {
+  likeBtn.classList.remove("favorite-quote");
+
+  favoriteQuotes = favoriteQuotes.filter((item) => {
+    return item.text !== quoteText.textContent;
+  });
+}
+
+function updateFavorite() {
+  if (likeBtn.classList.contains("favorite-quote") && favoriteQuotes !== undefined) {
+    removeFavorite();
+  } else {
+    addFavorite();
+  }
+}
+
 // event listerners
 newQuoteBtn.addEventListener("click", newQuote);
 twitterBtn.addEventListener("click", tweetQuote);
+likeBtn.addEventListener("click", updateFavorite);
+// facebookBtn.addEventListener("click", shareOnFacebook);
 
 // run function on load
 getQuotes();
