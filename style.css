@@ -37,16 +37,27 @@ a {
   justify-content: center;
 }
 
-
-
 .quote-container {
   width: auto;
   max-width: 900px;
-  /* margin: 20px 30px; */
   padding: 20px 30px;
+  padding-right: 0px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+.main-quote {
+  display: flex;
+}
+
+.quote-left, .quote-right {
+  flex: 0;
+}
+
+.quote-middle {
+  flex: 1;
+  padding-right: 30px;
 }
 
 .quote-text {
@@ -82,7 +93,7 @@ button {
   font-size: 1.2rem;
   height: 2.5rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 25px;
   color: white;
   background: #333333;
   outline: none;
@@ -99,12 +110,29 @@ button:active {
   box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
 }
 
+.quote-share {
+  color: white;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  background-color: #333333;
+  border-radius: 10px 0px 0px 10px;
+  padding: 10px;
+}
+
+.quote-share div {
+  padding: 5px 0px;
+}
+
 .twitter-button:hover {
   color: #38A1F3;
 }
 
 /* Social Media Icons */
-.fa-twitter, .fa-linkedin, .fa-github {
+.fa-twitter, .fa-linkedin, .fa-github, .fa-heart, .fa-facebook {
   font-size: 1.5rem;
 }
 

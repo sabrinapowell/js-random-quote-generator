@@ -70,7 +70,6 @@ async function getQuotes() {
     const response = await fetch(apiUrl);
 
     apiQuotes = await response.json();
-    console.log(apiQuotes);
     newQuote();
 
   } catch (error) {
