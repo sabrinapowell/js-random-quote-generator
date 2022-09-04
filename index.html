@@ -13,6 +13,16 @@
 </head>
 <body>
   <div class="main-container">
+    <div class="header hide" id="header">
+      <div class="favorites-tab" id="favorites-tab">
+        View Favorites <i class="fas fa-heart"></i>
+      </div>
+      <div class="home-tab" id="home-tab">
+        Home
+        <i class="fas fa-home"></i>
+      </div>
+    </div>
+
     <div class="generator-container">
       <div class="quote-container" id="quote-container">
         <div class="main-quote">
@@ -43,14 +53,23 @@
           </div>
         </div>
 
-        <!-- Buttons -->
+        <!-- Button -->
         <div class="button-container">
           <button id="new-quote">New Quote</button>
         </div>
       </div>
       
       <!-- Loader -->
-      <div class="loader" id="loader"></div>  
+      <div class="loader" id="loader"></div>
+
+      <!-- Favourite Quotes -->
+      <div class="favorite-quotes-container hide" id="favorite-quotes-container">
+        <div class="fav-quotes-header" id="fav-quotes-header">
+          Your Favorite Quotes
+        </div>
+        
+        
+      </div>
     </div>
     
     <!-- Footer -->

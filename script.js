@@ -1,9 +1,13 @@
 const quoteContainer = document.getElementById("quote-container");
+const faveQuoteContainer = document.getElementById("favorite-quotes-container");
 const quoteText = document.getElementById("quote");
 const authorText = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
 const facebookBtn = document.getElementById("facebook");
 const likeBtn = document.getElementById("likeBtn");
+const favoriteTab = document.getElementById("favorites-tab");
+const homeTab = document.getElementById("home-tab");
+const header = document.getElementById("header");
 
 const newQuoteBtn = document.getElementById("new-quote");
 const loader = document.getElementById("loader");
@@ -32,6 +36,7 @@ function getQuoteIndex() {
 // show new quote
 function newQuote() {
   showLoadingSpinner();
+  faveQuoteContainer.classList.add("hide");
 
   let quote = null;
   let quoteIndex = null;
@@ -68,6 +73,7 @@ function newQuote() {
 
   hideLoadingSpinner();
   removeFavorite();
+  manageHeaderDisplay();
 }
 
 // get quotes from API
@@ -100,6 +106,31 @@ function shareOnFacebook() {
   // TODO: add error message
 }
 
+function manageHeaderDisplay() {
+  manageTabDisplay();
+
+  if (!favoriteTab.classList.contains("hide") || !homeTab.classList.contains("hide")) {
+    header.classList.remove("hide");
+  } else {
+    header.classList.add("hide");
+  }
+}
+
+function manageTabDisplay() {
+  if (!quoteContainer.hidden) {
+    homeTab.classList.add("hide");
+    
+    if (favoriteQuotes === undefined || favoriteQuotes.length === 0) {
+      favoriteTab.classList.add("hide");
+    } else {
+      favoriteTab.classList.remove("hide");
+    }
+  } else {
+    homeTab.classList.remove("hide");
+    favoriteTab.classList.add("hide");
+  }
+}
+
 function addFavorite() {
   favoriteQuotes.push(apiQuotes[currentQuoteIndex]);
   likeBtn.classList.add("favorite-quote");
@@ -119,6 +150,16 @@ function updateFavorite() {
   } else {
     addFavorite();
   }
+
+  manageHeaderDisplay();
+}
+
+function showFavorites() {
+  quoteContainer.hidden = true;
+  faveQuoteContainer.classList.remove("hide");
+  manageHeaderDisplay();
+
+
 }
 
 // event listerners
@@ -126,6 +167,8 @@ newQuoteBtn.addEventListener("click", newQuote);
 twitterBtn.addEventListener("click", tweetQuote);
 likeBtn.addEventListener("click", updateFavorite);
 // facebookBtn.addEventListener("click", shareOnFacebook);
+favoriteTab.addEventListener("click", showFavorites);
+homeTab.addEventListener("click", newQuote);
 
 // run function on load
 getQuotes();
