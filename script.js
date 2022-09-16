@@ -158,8 +158,6 @@ function showFavorites() {
   quoteContainer.hidden = true;
   faveQuoteContainer.classList.remove("hide");
   manageHeaderDisplay();
-
-
 }
 
 // event listerners
