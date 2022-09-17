@@ -89,12 +89,17 @@ th, td {
   text-align: left;
 }
 
-th {
+th, .no-favorites {
   font-size: 1.5rem;
 }
 
 td {
   font-size: 1.1rem;
+}
+
+.no-favorites {
+  margin: auto 0;
+  padding: 40px 20px;
 }
 
 /* Generating quotes */
