@@ -6,6 +6,7 @@
 
 > This project was developed as a part of an [online course](https://www.udemy.com/course/javascript-web-projects-to-build-your-portfolio-resume/). 
 
+This project allows users to generate quotes available from an API and save their favorites.
 
 <br>
 
