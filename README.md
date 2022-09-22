@@ -8,6 +8,8 @@
 
 This project allows users to generate quotes available from an API and save their favorites.
 
+View Site: https://sabrinapowell.github.io/js-random-quote-generator/
+
 <br>
 
 # Socials
